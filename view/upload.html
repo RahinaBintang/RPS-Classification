@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Sampah by Rahina Bintang</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url("{{ url_for('static', filename='source/background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+
+        }
+
+        h1 {
+            background-color: rgba(76, 175, 80);
+            color: #fff;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+        }
+
+        select {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 1rem;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h1>Klasifikasi Sampah Menggunakan Pendekatan CNN dan InceptionV3</h1>
+    
+    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+        <button type="submit">Upload Gambar</button>
+    </form>
+
+    {% if filename %}
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" width="300" height="300" style="max-width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <form action="{{ url_for('predict') }}" method="get">
+            <input type="hidden" name="filename" value="{{ filename }}">
+            <p>Pilih Model Klasifikasi</p>
+            <select name="selected_model" required>
+                <option value="cnn">CNN</option>
+                <option value="inceptionv3">InceptionV3</option>
+            </select>
+            <button type="submit">Lakukan Prediksi</button>
+        </form>
+    {% endif %}
+</body>
+</html>

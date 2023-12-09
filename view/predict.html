@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Prediksi</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url("{{ url_for('static', filename='source/background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            background-color: rgba(76, 175, 80, 0.8);
+            color: #fff;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 5rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hasil Prediksi</h1>
+    
+    {% if filename and prediction %}
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" width="300" height="300" style="max-width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        <p>Sampah {{ prediction }}</p>
+    {% else %}
+        <p>No image or prediction available.</p>
+    {% endif %}
+</body>
+</html>
