@@ -1,3 +1,4 @@
+# Import modul Flask dan modul yang diperlukan
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from werkzeug.utils import secure_filename
@@ -5,26 +6,30 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import numpy as np
 
+# Inisialisasi aplikasi Flask
 app = Flask(__name__)
 
-# Load models
+# Load model machine learning yang telah dilatih sebelumnya
 model_cnn = load_model('models/cnn_model.h5')
 model_inceptionv3 = load_model('models/inceptionv3_model.h5')
 
-# Set the upload folder and allowed extensions
+# Konfigurasi folder untuk menyimpan file yang diunggah dan ekstensi yang diizinkan
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'jpg', 'jpeg', 'png'}
 
-# Define class labels
+# Tentukan label kelas untuk hasil prediksi
 labels = ['Kertas', 'Batu', 'Gunting']
 
+# Fungsi untuk memeriksa apakah file memiliki ekstensi yang diizinkan
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+# Rute untuk menampilkan halaman unggah awal
 @app.route('/')
 def upload_page():
     return render_template('upload.html')
 
+# Rute untuk menangani unggahan file
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -42,6 +47,7 @@ def upload_file():
 
         return render_template('upload.html', filename=filename)
 
+# Rute untuk menangani prediksi gambar
 @app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
@@ -51,11 +57,11 @@ def predict():
         filename = request.args.get('filename')
         selected_model = request.args.get('selected_model')
 
-    # Image Path
+    # Path gambar
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     preprocessing_number = 0
 
-    # Load the image & selected model
+    # Muat gambar dan model yang dipilih
     if selected_model == 'cnn':
         selected_model = model_cnn
         img = image.load_img(file_path, target_size=(128, 128))
@@ -64,8 +70,8 @@ def predict():
         img = image.load_img(file_path, target_size=(299, 299))
         preprocessing_number = 1
     else:
-        # Handle the case where no model is selected
-        return render_template('error.html', message='Invalid model selection')
+        # Tangani kasus ketika tidak ada model yang dipilih
+        return render_template('error.html', message='Pemilihan model tidak valid')
 
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
@@ -74,25 +80,27 @@ def predict():
     prediction = selected_model.predict(img_array)
     predicted_class = ''
 
+    # Proses prediksi berdasarkan preprocessing_number
     if preprocessing_number == 0: 
-        # Get the predicted class index
+        # Dapatkan indeks kelas yang diprediksi
         predicted_class_index = np.argmax(prediction)
 
-        # Get the predicted class label
+        # Dapatkan label kelas yang diprediksi
         predicted_class = labels[predicted_class_index]
 
     elif preprocessing_number == 1:
-        # Get the predicted class indices for each class
+        # Dapatkan indeks kelas yang diprediksi untuk setiap kelas
         predicted_class_indices = np.where(prediction > 0.5)[1]
 
-        # Check if any class is predicted
+        # Periksa apakah ada kelas yang diprediksi
         if len(predicted_class_indices) > 0:
-            # Get the first predicted class label (you may need to modify this logic based on your specific requirements)
+            # Dapatkan label kelas yang diprediksi pertama (Anda mungkin perlu memodifikasi logika ini berdasarkan kebutuhan spesifik Anda)
             predicted_class = labels[predicted_class_indices[0]]
         else:
-            predicted_class = 'No Class Predicted'
+            predicted_class = 'Tidak Ada Kelas yang Diprediksi'
 
     return render_template('predict.html', filename=filename, prediction=predicted_class)
 
+# Jalankan aplikasi jika script dijalankan
 if __name__ == '__main__':
     app.run(debug=True)
