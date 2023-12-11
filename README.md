@@ -8,7 +8,9 @@ Proyek ini bertujuan untuk mengembangkan sebuah sistem klasifikasi gambar yang d
 Model yang digunakan: ***Convolutional Neural Network*** (CNN) dengan 3 Layer dan Pre Trained Model ***Inception-V3*** dengan Architecture Model kurang lebih seperti gambar berikut.
 
 **CNN Architecture**
+
 ![image](https://github.com/RahinaBintang/Data-Science/blob/abd3fcafd310a5680bd6e78b0551a478b26481e0/assets/model/CNN%20Flow.png)
 
 **Inception-V3 Architecture**
+
 ![image](https://github.com/RahinaBintang/Data-Science/blob/2333b523b8e4b38055b04cda021be1b790b9b978/assets/model/InceptionV3%20Flow.png)
