@@ -5,3 +5,5 @@ Proyek ini bertujuan untuk mengembangkan sebuah sistem klasifikasi gambar yang d
 
 **Link Dataset yang digunakan:** [RPS Dataset](https://drive.google.com/drive/folders/1FhH72OaOBqVZchjYa4KLqFerBupNckEb?usp=sharing). Preprocessing yang digunakan antara lain Resizing, Normalization, Augmentation.
 
+Model yang digunakan: Convolutional Neural Network dengan 3 Layer dan Pre Trained Model Inception-V3 dengan Architecture Model kurang lebih seperti gambar berikut.
+![image](https://user-images.githubusercontent.com/RahinaBintang/Data-Science/main/assets/model/CNN%20Flow.png)
