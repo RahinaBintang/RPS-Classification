@@ -32,10 +32,20 @@ Hasil dari CNN Model yang telah dibangun adalah sebagai berikut :
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/38badf24f75925826aa7e54a3568889d39ca1330/assets/summary_cnn_model.png)
 
 **Model Evaluation**
+
 Berikut adalah hasil dari fitting CNN Model yang telah dibangun :
 
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_acc.png)
+
+Plot diatas menunjukkan bahwa training acc dapat stabil diatas 95%, namun validation acc nya mengalami fluktuatif acc pada rentang 70 hingga 90%.
+
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_loss.png)
+
+Plot diatas menunjukkan bahwa loss dari training set stabil di 1.0, sedangkan val_loss nya mengalami fluktuatif dengan rentang loss antara 0.4 hingga 1.0
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/6f64fbd6c815604bade74c3638a03cffdf60de8d/assets/cnn_model_classification_report.png)
+
+Gambar diatas merupakan *Classification Report* dari Model setelah dilakukan *predict* terhadap *Testing Set*. Dapat dilihat bahwa Akurasinya mencapai 95% dengan hasil prediksi pada label *'Rock'* dapat sempurna di 100% acc.
 
 ### Inception-V3 Model ✨
 Preprocessing
