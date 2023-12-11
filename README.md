@@ -7,11 +7,11 @@ Proyek ini bertujuan untuk mengembangkan sebuah sistem klasifikasi gambar yang d
 
 Model yang digunakan: ***Convolutional Neural Network*** (CNN) dengan 3 Layer dan Pre Trained Model ***Inception-V3*** dengan Architecture Model kurang lebih seperti gambar berikut.
 
-**CNN Architecture**
+**CNN Architecture** ✨
 
 ![image](https://github.com/RahinaBintang/Data-Science/blob/abd3fcafd310a5680bd6e78b0551a478b26481e0/assets/model/CNN%20Flow.png)
 
-**Inception-V3 Architecture**
+**Inception-V3 Architecture** ✨
 
 ![image](https://github.com/RahinaBintang/Data-Science/blob/2333b523b8e4b38055b04cda021be1b790b9b978/assets/model/InceptionV3%20Flow.png)
 
@@ -20,11 +20,19 @@ Dataset yang digunakan adalah RPS Dataset dengan link sebagai [berikut](https://
 
 ## Preprocessing & Modelling
 
-### CNN Model
-Preprocessing
-Modelling
+### CNN Model ✨
+**Preprocessing**
+Preprocessing yang dilakukan antara lain adalah resizing (128,128), lalu rescale / normalization dengan rentang 1./255, dilanjut dengan melakukan splitting dataset menjadi 3 *(Training, Validation, dan Testing)* sesuai dengan penjelasan pada Dataset.
 
-### Inception-V3 Model
+**Modelling**
+Hasil dari CNN Model yang telah dibangun adalah sebagai berikut :
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/38badf24f75925826aa7e54a3568889d39ca1330/assets/summary_cnn_model.png)
+
+**Model Evaluation**
+Berikut adalah hasil dari fitting CNN Model yang telah dibangun :
+
+### Inception-V3 Model ✨
 Preprocessing
 Modelling
 
