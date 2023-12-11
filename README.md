@@ -23,7 +23,7 @@ Dataset yang digunakan adalah RPS Dataset dengan link sebagai [berikut](https://
 ### CNN Model ✨
 **Preprocessing**
 
-Preprocessing yang dilakukan antara lain adalah resizing (128,128), lalu rescale / normalization dengan rentang 1./255, dilanjut dengan melakukan splitting dataset menjadi 3 *(Training, Validation, dan Testing)* sesuai dengan penjelasan pada Dataset.
+Preprocessing yang dilakukan antara lain adalah *resizing* **(128,128)**, lalu *rescale / normalization* dengan rentang **1./255**, dilanjut dengan melakukan *splitting* dataset menjadi 3 *(Training, Validation, dan Testing)* sesuai dengan penjelasan pada Dataset.
 
 **Modelling**
 
@@ -37,18 +37,35 @@ Berikut adalah hasil dari fitting CNN Model yang telah dibangun :
 
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_acc.png)
 
-Plot diatas menunjukkan bahwa training acc dapat stabil diatas 95%, namun validation acc nya mengalami fluktuatif acc pada rentang 70 hingga 90%.
+Plot diatas menunjukkan bahwa training acc dapat stabil diatas **95%**, namun validation acc nya mengalami fluktuatif acc pada rentang **70 hingga 90%**.
 
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_loss.png)
 
-Plot diatas menunjukkan bahwa loss dari training set stabil di 1.0, sedangkan val_loss nya mengalami fluktuatif dengan rentang loss antara 0.4 hingga 1.0
+Plot diatas menunjukkan bahwa loss dari training set stabil di **1.0**, sedangkan val_loss nya mengalami fluktuatif dengan rentang loss antara **0.4 hingga 1.0**.
 
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/6f64fbd6c815604bade74c3638a03cffdf60de8d/assets/cnn_model_classification_report.png)
 
-Gambar diatas merupakan *Classification Report* dari Model setelah dilakukan *predict* terhadap *Testing Set*. Dapat dilihat bahwa Akurasinya mencapai 95% dengan hasil prediksi pada label *'Rock'* dapat sempurna di 100% acc.
+Gambar diatas merupakan *Classification Report* dari Model setelah dilakukan *predict* terhadap *Testing Set*. Dapat dilihat bahwa Akurasinya mencapai **95%** dengan hasil prediksi pada label *'Rock'* dapat sempurna di **100% acc**.
 
 ### Inception-V3 Model ✨
-Preprocessing
-Modelling
+**Preprocessing**
+
+Preprocessing yang dilakukan antara lain adalah resizing **(299,299)** sesuai rekomendasi Inception-V3, lalu rescale / normalization dengan rentang 1./255, lalu melakukan augmentasi dengan parameter seperti *sheer_range* yang diatur ke **0.2**, *zoom_range* diatur ke **0.2**, dan *horizontal_flip*. Setelah augmentasi selesai dilakukan, langkah terakhir adalah *splitting* dataset menjadi 3 *(Training, Validation, dan Testing)* sesuai dengan penjelasan pada Dataset.
+
+**Modelling & Evaluation**
+
+Berikut hasil dari Model setelah dilakukan *Fine-Tuning* menggunakan dataset RPS :
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/558bab4e15a2eb63b924d00953009864e88059be/assets/Inception_acc.png)
+
+Plot diatas menunjukkan bahwa *training_acc* stabil mendekati **100%**, namun *val_acc* nya cuma mencapai **94%**, hal ini menjadi indikasi bahwa model mengalami *overfitting*.
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/558bab4e15a2eb63b924d00953009864e88059be/assets/Inception_loss.png)
+
+Dapat dilihat pada plot loss diatas. *Training dan Val Loss* sama - sama turun, namun val_loss cenderung lebih tinggi dibanding training_loss nya. Hal ini mungkin saja disebabkan karena terjadi *Overfitting* pada Model dan perlu dilakukan *tuning* lebih lanjut untuk menghilangkan *Overfit*.
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/558bab4e15a2eb63b924d00953009864e88059be/assets/inception_model_classification_report.png)
+
+Gambar diatas menunjukkan *Classification Report* dari Model setelah dilakukan predict terhadap *Testing Set*. Terlihat bahwa Model sangat akurat dan lebih baik dari CNN Model dalam generalisasi data dengan Akurasi tepat **100%**.
 
 ## Local Web Deployment
