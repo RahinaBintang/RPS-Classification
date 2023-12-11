@@ -69,3 +69,19 @@ Dapat dilihat pada plot loss diatas. *Training dan Val Loss* sama - sama turun, 
 Gambar diatas menunjukkan *Classification Report* dari Model setelah dilakukan predict terhadap *Testing Set*. Terlihat bahwa Model sangat akurat dan lebih baik dari CNN Model dalam generalisasi data dengan Akurasi tepat **100%**.
 
 ## Local Web Deployment
+
+### Tampilan HomePage
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/acad73dca7d4d8ca7e0a29add50b4cbb6addc189/assets/Home.png)
+
+### Tampilan HomePage Setelah Upload Image
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/acad73dca7d4d8ca7e0a29add50b4cbb6addc189/assets/Upload%20Image.png)
+
+### Tampilan Prediction Result
+
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/acad73dca7d4d8ca7e0a29add50b4cbb6addc189/assets/Prediction%20Result.png)
+
+## Author 👨‍💻
+
+- [@RahinaBintang](https://github.com/RahinaBintang)
