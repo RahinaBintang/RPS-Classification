@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import numpy as np
+import time
 
 # Inisialisasi aplikasi Flask
 app = Flask(__name__)
@@ -23,6 +24,12 @@ labels = ['Kertas', 'Batu', 'Gunting']
 # Fungsi untuk memeriksa apakah file memiliki ekstensi yang diizinkan
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+# Fungsi untuk mendapatkan waktu eksekusi prediksi
+def get_prediction_time(start_time):
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    return round(elapsed_time, 3)
 
 # Rute untuk menampilkan halaman unggah awal
 @app.route('/')
@@ -61,7 +68,7 @@ def predict():
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     preprocessing_number = 0
 
-    # Muat gambar dan model yang dipilih
+    # Load gambar dan model yang dipilih
     if selected_model == 'cnn':
         selected_model = model_cnn
         img = image.load_img(file_path, target_size=(128, 128))
@@ -76,6 +83,9 @@ def predict():
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
     img_array /= 255.0
+
+    # Mulai waktu untuk mengukur lama waktu prediksi
+    start_time = time.time()
 
     prediction = selected_model.predict(img_array)
     predicted_class = ''
@@ -99,7 +109,10 @@ def predict():
         else:
             predicted_class = 'Tidak Ada Kelas yang Diprediksi'
 
-    return render_template('predict.html', filename=filename, prediction=predicted_class)
+    # Hitung lama waktu prediksi
+    prediction_time = get_prediction_time(start_time)
+
+    return render_template('predict.html', filename=filename, prediction=predicted_class, prediction_time=prediction_time)
 
 # Jalankan aplikasi jika script dijalankan
 if __name__ == '__main__':
