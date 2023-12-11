@@ -21,10 +21,12 @@ Dataset yang digunakan adalah RPS Dataset dengan link sebagai [berikut](https://
 ## Preprocessing & Modelling
 
 ### CNN Model ✨
-**Preprocessing**\n
+**Preprocessing**
+
 Preprocessing yang dilakukan antara lain adalah resizing (128,128), lalu rescale / normalization dengan rentang 1./255, dilanjut dengan melakukan splitting dataset menjadi 3 *(Training, Validation, dan Testing)* sesuai dengan penjelasan pada Dataset.
 
-**Modelling**\n
+**Modelling**
+
 Hasil dari CNN Model yang telah dibangun adalah sebagai berikut :
 
 ![image](https://github.com/RahinaBintang/RPS-Classification/blob/38badf24f75925826aa7e54a3568889d39ca1330/assets/summary_cnn_model.png)
