@@ -15,7 +15,7 @@ Model yang digunakan: ***Convolutional Neural Network*** (CNN) dengan 3 Layer da
 
 ![image](https://github.com/RahinaBintang/Data-Science/blob/2333b523b8e4b38055b04cda021be1b790b9b978/assets/model/InceptionV3%20Flow.png)
 
-##Overview Dataset
+## Overview Dataset
 Dataset yang digunakan adalah RPS Dataset dengan link sebagai [berikut](https://drive.google.com/drive/folders/1FhH72OaOBqVZchjYa4KLqFerBupNckEb?usp=sharing). Dataset terdiri atas 2.520 data yang terbagi menjadi 70% sebagai *Training Set*, 15% sebagai *Validation Set*, dan 15% sebagai *Testing Set*, dimana pada setiap Set, terdapat 3 Label Class yaitu *Paper'*, *'Rock'*, dan *'Scissors'*. 
 
 ## Preprocessing & Modelling
