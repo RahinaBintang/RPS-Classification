@@ -36,9 +36,17 @@
 
         p {
             margin-top: 1rem;
+            font-weight: bold;
             font-size: 1.2rem;
-            color: #000;
+            color: black;
         }
+
+        #Result{
+            background-color: white;
+            margin-left: 40%;
+            margin-right: 40%;
+        }
+
     </style>
 </head>
 <body>
@@ -46,9 +54,12 @@
     
     {% if filename and prediction %}
         <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" width="300" height="300" style="max-width: 100%; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
-        <p>Hasil Prediksi : {{ prediction }}</p>
+        <div id="Result">
+            <p>Hasil Prediksi: {{ prediction }}</p>
+            <p>Lama Waktu Prediksi: {{ prediction_time }} detik</p>
+        </div>
     {% else %}
-        <p>No image or prediction available.</p>
+        <p>Tidak ada gambar atau prediksi yang tersedia.</p>
     {% endif %}
 </body>
 </html>
