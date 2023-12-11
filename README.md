@@ -34,6 +34,9 @@ Hasil dari CNN Model yang telah dibangun adalah sebagai berikut :
 **Model Evaluation**
 Berikut adalah hasil dari fitting CNN Model yang telah dibangun :
 
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_acc.png)
+![image](https://github.com/RahinaBintang/RPS-Classification/blob/3e40ed59be32456eb4de90c79ed0c9f1ab31f84e/assets/CNN_loss.png)
+
 ### Inception-V3 Model ✨
 Preprocessing
 Modelling
